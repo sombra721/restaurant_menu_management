@@ -1,8 +1,11 @@
 # Restaurant Review System
 
-A Django-based web application that allows users to browse restaurants, view menus, and leave comments. This project was built as a learning exercise to practice modern Django development, including authentication, class-based views, ORM relationships, form handling, and user permissions.
+🌐 **Language**
 
-> **Note:** This project is based on an older Django tutorial and has been migrated to work with **Python 3.12** and **Django 5.x**.
+- 🇺🇸 English (Current)
+- 🇹🇼 [繁體中文](README_zh.md)
+- 
+A Django-based web application that allows users to browse restaurants, view menus, and leave comments. This project was built as a learning exercise to practice modern Django development, including authentication, class-based views, ORM relationships, form handling, and user permissions.
 
 ---
 
