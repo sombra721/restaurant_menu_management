@@ -1,19 +1,18 @@
-from django.shortcuts import render
-from django.utils import timezone
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.views.generic.list import ListView
-from django.utils.decorators import method_decorator
-from django.views.generic.detail import DetailView, SingleObjectMixin
-from django.views.generic.edit import FormView
-
-from menu.models import Restaurant, Comment
-from menu.forms import CommentForm
-from menu.permissions import user_can_comment
-
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
+from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
+from django.views.generic.detail import DetailView, SingleObjectMixin
+from django.views.generic.edit import FormView
+from django.views.generic.list import ListView
+
+from menu.forms import CommentForm, FoodForm, RestaurantForm
+from menu.models import Comment, Food, Restaurant
+from menu.permissions import user_can_comment
 
 
 class MenuView(DetailView):
@@ -50,6 +49,73 @@ class RestaurantsView(ListView):
         :returns: return origin dispatch
         """
         return super(RestaurantsView, self).dispatch(request, *args, **kwargs)
+
+
+@staff_member_required
+def restaurant_create(request):
+    if request.method == "POST":
+        form = RestaurantForm(request.POST)
+
+        if form.is_valid():
+            restaurant = form.save()
+            return redirect("restaurant_detail", pk=restaurant.pk)
+    else:
+        form = RestaurantForm()
+
+    return render(
+        request,
+        "restaurant_form.html",
+        {
+            "form": form,
+            "page_title": "新增餐廳",
+        },
+    )
+
+
+@staff_member_required
+def restaurant_update(request, pk):
+    restaurant = get_object_or_404(Restaurant, pk=pk)
+
+    if request.method == "POST":
+        form = RestaurantForm(
+            request.POST,
+            instance=restaurant,
+        )
+
+        if form.is_valid():
+            restaurant = form.save()
+            return redirect("restaurant_detail", pk=restaurant.pk)
+    else:
+        form = RestaurantForm(instance=restaurant)
+
+    return render(
+        request,
+        "restaurant_form.html",
+        {
+            "form": form,
+            "restaurant": restaurant,
+            "page_title": "修改餐廳",
+        },
+    )
+
+
+@staff_member_required
+def restaurant_delete(request, pk):
+    restaurant = get_object_or_404(Restaurant, pk=pk)
+
+    if request.method == "POST":
+        restaurant.delete()
+        return redirect("restaurant_list")
+
+    return render(
+        request,
+        "confirm_delete.html",
+        {
+            "object": restaurant,
+            "object_type": "餐廳",
+            "cancel_url_name": "restaurant_detail",
+        },
+    )
 
 
 class CommentView(FormView, SingleObjectMixin):
