@@ -198,5 +198,96 @@ def register(request):
     )
 
 
+@staff_member_required
+def food_create(request, restaurant_pk):
+    restaurant = get_object_or_404(
+        Restaurant,
+        pk=restaurant_pk,
+    )
+
+    if request.method == "POST":
+        form = FoodForm(request.POST)
+
+        if form.is_valid():
+            # food needs to belong to a restaurant
+            food = form.save(commit=False)
+            food.restaurant = restaurant
+            food.save()
+
+            return redirect(
+                "restaurant_detail",
+                pk=restaurant.pk,
+            )
+    else:
+        form = FoodForm()
+
+    return render(
+        request,
+        "food_form.html",
+        {
+            "form": form,
+            "restaurant": restaurant,
+            "page_title": "新增餐點",
+        },
+    )
+
+
+@staff_member_required
+def food_update(request, pk):
+    food = get_object_or_404(Food, pk=pk)
+
+    if request.method == "POST":
+        form = FoodForm(
+            request.POST,
+            instance=food,
+        )
+
+        if form.is_valid():
+            food = form.save()
+
+            return redirect(
+                "restaurant_detail",
+                pk=food.restaurant.pk,
+            )
+    else:
+        form = FoodForm(instance=food)
+
+    return render(
+        request,
+        "food_form.html",
+        {
+            "form": form,
+            "food": food,
+            "restaurant": food.restaurant,
+            "page_title": "修改餐點",
+        },
+    )
+
+
+@staff_member_required
+def food_delete(request, pk):
+    food = get_object_or_404(Food, pk=pk)
+    restaurant_pk = food.restaurant.pk
+
+    if request.method == "POST":
+        food.delete()
+
+        return redirect(
+            "restaurant_detail",
+            pk=restaurant_pk,
+        )
+
+    return render(
+        request,
+        "confirm_delete.html",
+        {
+            "object": food,
+            "object_type": "餐點",
+            "restaurant": food.restaurant,
+            "cancel_url_name": "restaurant_detail",
+        },
+    )
+
+
 class IndexView(TemplateView):
     template_name = "index.html"
