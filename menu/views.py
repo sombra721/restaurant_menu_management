@@ -26,11 +26,10 @@ class MenuView(DetailView):
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         """ return decorated dispatch
-
         :request: request
         :returns: return origin dispatch
         """
-        return super(MenuView, self).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
 
 class RestaurantsView(ListView):
@@ -44,11 +43,10 @@ class RestaurantsView(ListView):
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         """ return decorated dispatch
-
         :request: request
         :returns: return origin dispatch
         """
-        return super(RestaurantsView, self).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
 
 @staff_member_required
@@ -209,7 +207,7 @@ def food_create(request, restaurant_pk):
         form = FoodForm(request.POST)
 
         if form.is_valid():
-            # food needs to belong to a restaurant
+            # food needs to belong to a restaurant, so do not commit here.
             food = form.save(commit=False)
             food.restaurant = restaurant
             food.save()

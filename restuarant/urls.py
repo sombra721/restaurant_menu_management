@@ -34,23 +34,72 @@ urlpatterns = [
         "accounts/logout/",
         LogoutView.as_view(next_page="/"),
     ),
+
     path("admin/", admin.site.urls),
+
+    path(
+        "accounts/register/",
+        views.register,
+        name="register",
+),
 
     path(
         "",
         TemplateView.as_view(template_name="index.html"),
         name="home",
     ),
+
     path(
-        "index/",
-        TemplateView.as_view(template_name="index.html"),
-        name="index",
+        "restaurants/",
+        views.RestaurantsView.as_view(),
+        name="restaurant_list",
     ),
-    path("accounts/register/", views.register),
+    path(
+        "restaurants/new/",
+        views.restaurant_create,
+        name="restaurant_create",
+    ),
+    path(
+        "restaurants/<int:pk>/",
+        views.MenuView.as_view(),
+        name="restaurant_detail",
+    ),
+    path(
+        "restaurants/<int:pk>/edit/",
+        views.restaurant_update,
+        name="restaurant_update",
+    ),
+    path(
+        "restaurants/<int:pk>/delete/",
+        views.restaurant_delete,
+        name="restaurant_delete",
+    ),
 
-    path("welcome/", views.welcome),
+    path(
+        "restaurants/<int:restaurant_pk>/foods/new/",
+        views.food_create,
+        name="food_create",
+    ),
+    path(
+        "foods/<int:pk>/edit/",
+        views.food_update,
+        name="food_update",
+    ),
+    path(
+        "foods/<int:pk>/delete/",
+        views.food_delete,
+        name="food_delete",
+    ),
 
-    path("menu/<int:pk>/", views.MenuView.as_view()),
-    path("restaurants_list/", views.RestaurantsView.as_view()),
-    path("comment/<int:pk>/", views.CommentView.as_view()),
+    path(
+        "restaurants/<int:pk>/comment/",
+        views.CommentView.as_view(),
+        name="comment_create",
+    ),
+
+    path(
+        "welcome/",
+        views.welcome,
+        name="welcome",
+    ),
 ]

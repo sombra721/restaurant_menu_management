@@ -30,12 +30,52 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         {% if request.user.is_authenticated %}
-                            <li><a href="#">Hi! {{ request.user }}</a></li>
-                            <li><a href="/restaurants_list/">餐廳列表</a></li>
-                            <li><a href="/accounts/logout/">登出</a></li>
+                            <li>
+                                <a href="#">
+                                    Hi, {{ request.user.username }}
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'restaurant_list' %}">
+                                    餐廳列表
+                                </a>
+                            </li>
+
+                            {% if request.user.is_staff %}
+                                <li>
+                                    <a href="{% url 'restaurant_create' %}">
+                                        新增餐廳
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            <li>
+                                <form
+                                    method="post"
+                                    action="{% url 'logout' %}"
+                                    style="display: inline;"
+                                >
+                                    {% csrf_token %}
+                                    <button
+                                        type="submit"
+                                        class="btn btn-link navbar-btn"
+                                    >
+                                        登出
+                                    </button>
+                                </form>
+                            </li>
                         {% else %}
-                            <li><a href="/accounts/login/">登入</a></li>
-                            <li><a href="/accounts/register/">註冊</a></li>
+                            <li>
+                                <a href="{% url 'login' %}">
+                                    登入
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'register' %}">
+                                    註冊
+                                </a>
+                            </li>
                         {% endif %}
                     </ul>
                 </div><!--/.nav-collapse -->
