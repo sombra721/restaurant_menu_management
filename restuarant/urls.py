@@ -41,7 +41,7 @@ urlpatterns = [
         "accounts/register/",
         views.register,
         name="register",
-),
+    ),
 
     path(
         "",
