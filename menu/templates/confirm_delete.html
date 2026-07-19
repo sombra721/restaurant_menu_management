@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+    確認刪除
+{% endblock %}
+
+{% block content %}
+    <h2>確認刪除{{ object_type }}</h2>
+
+    <p>
+        確定要刪除「{{ object }}」嗎？
+    </p>
+
+    {% if object_type == "餐廳" %}
+        <div class="alert alert-warning">
+            刪除餐廳後，相關餐點與評論也會一起刪除。
+        </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-danger">
+            確認刪除
+        </button>
+
+        {% if restaurant %}
+            <a
+                href="{% url 'restaurant_detail' restaurant.pk %}"
+                class="btn btn-default"
+            >
+                取消
+            </a>
+        {% else %}
+            <a
+                href="{% url 'restaurant_detail' object.pk %}"
+                class="btn btn-default"
+            >
+                取消
+            </a>
+        {% endif %}
+    </form>
+{% endblock %}

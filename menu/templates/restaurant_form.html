@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ page_title }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ page_title }}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">
+            儲存
+        </button>
+
+        {% if restaurant %}
+            <a
+                href="{% url 'restaurant_detail' restaurant.pk %}"
+                class="btn btn-default"
+            >
+                取消
+            </a>
+        {% else %}
+            <a
+                href="{% url 'restaurant_list' %}"
+                class="btn btn-default"
+            >
+                取消
+            </a>
+        {% endif %}
+    </form>
+{% endblock %}

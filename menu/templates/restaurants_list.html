@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+    餐廳列表
+{% endblock %}
+
+{% block content %}
+    <h2>餐廳列表</h2>
+
+    {% if request.user.is_staff %}
+        <p>
+            <a
+                href="{% url 'restaurant_create' %}"
+                class="btn btn-primary"
+            >
+                新增餐廳
+            </a>
+        </p>
+    {% endif %}
+
+    {% if restaurants %}
+        <div class="list-group">
+            {% for restaurant in restaurants %}
+                <a
+                    href="{% url 'restaurant_detail' restaurant.pk %}"
+                    class="list-group-item"
+                >
+                    <h4 class="list-group-item-heading">
+                        {{ restaurant.name }}
+                    </h4>
+
+                    <p class="list-group-item-text">
+                        {{ restaurant.address }}
+                    </p>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>目前還沒有餐廳資料。</p>
+    {% endif %}
+{% endblock %}
