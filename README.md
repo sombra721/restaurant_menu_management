@@ -26,7 +26,7 @@ A Django-based web application that allows users to browse restaurants, view men
 ## Tech Stack
 
 * Python 3.12
-* Django 5.x
+* Django 5.2.16
 * SQLite
 * Bootstrap
 * HTML
@@ -40,13 +40,16 @@ A Django-based web application that allows users to browse restaurants, view men
 restaurant/
 │
 ├── manage.py
+├── requirements.txt
 ├── restaurant/
+│   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
 │   ├── asgi.py
 │   └── wsgi.py
 │
 └── menu/
+    ├── apps.py
     ├── models.py
     ├── views.py
     ├── forms.py
@@ -177,29 +180,3 @@ This project demonstrates the following Django concepts:
 * Template rendering
 * URL routing
 * ORM CRUD operations
-
----
-
-## Future Improvements
-
-* Restaurant search
-* Restaurant categories
-* Rating system
-* Pagination
-* Image upload
-* REST API (Django REST Framework)
-* Docker support
-* Unit tests
-* CI/CD workflow with GitHub Actions
-
----
-
-## Screenshots
-
-Screenshots will be added after the UI is completed.
-
----
-
-## License
-
-This project is for educational purposes only.
