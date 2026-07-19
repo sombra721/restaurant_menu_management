@@ -1,0 +1,224 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-18 23:15-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\menu\forms.py:61
+msgid "餐廳名稱"
+msgstr "Restaurant"
+
+#: .\menu\forms.py:62 .\menu\templates\menu.html:11
+msgid "電話"
+msgstr "TEL"
+
+#: .\menu\forms.py:63 .\menu\templates\menu.html:12
+msgid "地址"
+msgstr "Address"
+
+#: .\menu\forms.py:77 .\menu\templates\menu.html:47 .\menu\views.py:288
+msgid "餐點"
+msgstr "Food name"
+
+#: .\menu\forms.py:78 .\menu\templates\menu.html:48
+msgid "價格"
+msgstr "Price"
+
+#: .\menu\forms.py:79
+msgid "附註"
+msgstr "Comment"
+
+#: .\menu\forms.py:80 .\menu\templates\menu.html:50
+msgid "辣味"
+msgstr "Spicy"
+
+#: .\menu\templates\base.html:7
+msgid "餐廳網站"
+msgstr "Restaurant website"
+
+#: .\menu\templates\base.html:72
+msgid "切換導覽列"
+msgstr ""
+
+#: .\menu\templates\base.html:84
+msgid "餐廳餐點管理系統"
+msgstr "Restaurant Menu Management System"
+
+#: .\menu\templates\base.html:96
+#, python-format
+msgid ""
+"\n"
+"                                        Hi, %(username)s\n"
+"                                    "
+msgstr ""
+
+#: .\menu\templates\base.html:104 .\menu\templates\index.html:15
+#: .\menu\templates\restaurants_list.html:5
+#: .\menu\templates\restaurants_list.html:9
+msgid "餐廳列表"
+msgstr "Restaurants list"
+
+#: .\menu\templates\base.html:111 .\menu\templates\restaurants_list.html:17
+#: .\menu\views.py:69
+msgid "新增餐廳"
+msgstr "Add new restaurant"
+
+#: .\menu\templates\base.html:128
+msgid "登出"
+msgstr "Logout"
+
+#: .\menu\templates\base.html:135 .\menu\templates\index.html:22
+msgid "登入"
+msgstr "Login"
+
+#: .\menu\templates\base.html:141 .\menu\templates\index.html:30
+#: .\menu\templates\register.html:5 .\menu\templates\register.html:20
+msgid "註冊"
+msgstr "Register"
+
+#: .\menu\templates\base.html:166
+msgid "選擇語言"
+msgstr "Select language"
+
+#: .\menu\templates\comments.html:5 .\menu\templates\comments.html:9
+#: .\menu\templates\menu.html:101
+msgid "發表評論"
+msgstr "Write comment"
+
+#: .\menu\templates\comments.html:13 .\menu\templates\food_form.html:12
+#: .\menu\views.py:114
+msgid "餐廳"
+msgstr "Restaurant"
+
+#: .\menu\templates\comments.html:23
+msgid "送出評論"
+msgstr ""
+
+#: .\menu\templates\comments.html:31 .\menu\templates\confirm_delete.html:39
+#: .\menu\templates\food_form.html:28 .\menu\templates\restaurant_form.html:25
+#: .\menu\templates\restaurant_form.html:32
+msgid "取消"
+msgstr "Candel"
+
+#: .\menu\templates\confirm_delete.html:5
+#: .\menu\templates\confirm_delete.html:31
+msgid "確認刪除"
+msgstr "Confirm delete"
+
+#: .\menu\templates\confirm_delete.html:10
+#, python-format
+msgid ""
+"\n"
+"            確認刪除%(type)s\n"
+"        "
+msgstr ""
+
+#: .\menu\templates\confirm_delete.html:16
+#, python-format
+msgid ""
+"\n"
+"            確定要刪除「%(name)s」嗎？\n"
+"        "
+msgstr ""
+
+#: .\menu\templates\confirm_delete.html:23
+msgid "刪除餐廳後，相關餐點與評論也會一起刪除。"
+msgstr ""
+
+#: .\menu\templates\food_form.html:21 .\menu\templates\restaurant_form.html:17
+msgid "儲存"
+msgstr "Save"
+
+#: .\menu\templates\index.html:5
+msgid "首頁"
+msgstr "Home"
+
+#: .\menu\templates\index.html:10
+msgid "歡迎來到餐廳餐點管理系統"
+msgstr "Welcome to restaurant menu management system"
+
+#: .\menu\templates\index.html:19
+msgid "您尚未登入喔～"
+msgstr "You have not logged in yet"
+
+#: .\menu\templates\index.html:27
+msgid "若您還沒有帳號，請"
+msgstr "Not a registered member, please"
+
+#: .\menu\templates\menu.html:20 .\menu\views.py:96
+msgid "修改餐廳"
+msgstr "Edit restaurant"
+
+#: .\menu\templates\menu.html:27
+msgid "刪除餐廳"
+msgstr "Delete restaurant"
+
+#: .\menu\templates\menu.html:34 .\menu\views.py:233
+msgid "新增餐點"
+msgstr "Create food"
+
+#: .\menu\templates\menu.html:41
+msgid "菜單"
+msgstr "Menu"
+
+#: .\menu\templates\menu.html:49
+msgid "說明"
+msgstr "Description"
+
+#: .\menu\templates\menu.html:53
+msgid "管理"
+msgstr "Manage"
+
+#: .\menu\templates\menu.html:66
+msgid "是"
+msgstr "Yes"
+
+#: .\menu\templates\menu.html:68
+msgid "否"
+msgstr "No"
+
+#: .\menu\templates\menu.html:78
+msgid "修改"
+msgstr "Edit"
+
+#: .\menu\templates\menu.html:85
+msgid "刪除"
+msgstr "Delete"
+
+#: .\menu\templates\menu.html:94
+msgid "這間餐廳目前沒有餐點。"
+msgstr "There is not food in this restaurant yet."
+
+#: .\menu\templates\restaurants_list.html:40
+msgid "目前還沒有餐廳資料。"
+msgstr "There is no restaurant yet."
+
+#: .\menu\views.py:175
+#, python-format
+msgid "歡迎！%(user_name)s"
+msgstr "Welcome! %(user_name)s"
+
+#: .\menu\views.py:265
+msgid "修改餐點"
+msgstr "Edit food"
+
+#: .\restuarant\settings.py:112
+msgid "Traditional Chinese"
+msgstr "繁體中文"
+
+#: .\restuarant\settings.py:113
+msgid "English"
+msgstr "英文"

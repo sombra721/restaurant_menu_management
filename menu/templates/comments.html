@@ -2,11 +2,17 @@
 {% load i18n %}
 
 {% block title %}
-    {{ page_title }}
+    {% trans "發表評論" %}
 {% endblock %}
 
 {% block content %}
-    <h2>{{ page_title }}</h2>
+    <h2>{% trans "發表評論" %}</h2>
+
+    {% if object %}
+        <p>
+            {% trans "餐廳" %}：{{ object.name }}
+        </p>
+    {% endif %}
 
     <form method="post">
         {% csrf_token %}
@@ -14,19 +20,12 @@
         {{ form.as_p }}
 
         <button type="submit" class="btn btn-primary">
-            {% trans "儲存" %}
+            {% trans "送出評論" %}
         </button>
 
-        {% if restaurant %}
+        {% if object %}
             <a
-                href="{% url 'restaurant_detail' restaurant.pk %}"
-                class="btn btn-default"
-            >
-                {% trans "取消" %}
-            </a>
-        {% else %}
-            <a
-                href="{% url 'restaurant_list' %}"
+                href="{% url 'restaurant_detail' object.pk %}"
                 class="btn btn-default"
             >
                 {% trans "取消" %}

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}
     {{ page_title }}
@@ -8,7 +9,7 @@
     <h2>{{ page_title }}</h2>
 
     <p>
-        餐廳：{{ restaurant.name }}
+        {% trans "餐廳" %}：{{ restaurant.name }}
     </p>
 
     <form method="post">
@@ -17,14 +18,14 @@
         {{ form.as_p }}
 
         <button type="submit" class="btn btn-primary">
-            儲存
+            {% trans "儲存" %}
         </button>
 
         <a
             href="{% url 'restaurant_detail' restaurant.pk %}"
             class="btn btn-default"
         >
-            取消
+            {% trans "取消" %}
         </a>
     </form>
 {% endblock %}

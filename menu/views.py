@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.utils.decorators import method_decorator
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.views.generic.edit import FormView
@@ -65,7 +66,7 @@ def restaurant_create(request):
         "restaurant_form.html",
         {
             "form": form,
-            "page_title": "新增餐廳",
+            "page_title": _("新增餐廳"),
         },
     )
 
@@ -92,7 +93,7 @@ def restaurant_update(request, pk):
         {
             "form": form,
             "restaurant": restaurant,
-            "page_title": "修改餐廳",
+            "page_title": _("修改餐廳"),
         },
     )
 
@@ -110,7 +111,7 @@ def restaurant_delete(request, pk):
         "confirm_delete.html",
         {
             "object": restaurant,
-            "object_type": "餐廳",
+            "object_type": _("餐廳"),
             "cancel_url_name": "restaurant_detail",
         },
     )
@@ -170,7 +171,11 @@ def welcome(request):
     user_name = request.GET.get("user_name", "")
 
     if user_name:
-        return HttpResponse(f"Welcome!~{user_name}")
+        return HttpResponse(
+            _("歡迎！%(user_name)s") % {
+                "user_name": user_name,
+            }
+        )
 
     return render(request, "welcome.html")
 
@@ -225,7 +230,7 @@ def food_create(request, restaurant_pk):
         {
             "form": form,
             "restaurant": restaurant,
-            "page_title": "新增餐點",
+            "page_title": _("新增餐點"),
         },
     )
 
@@ -257,7 +262,7 @@ def food_update(request, pk):
             "form": form,
             "food": food,
             "restaurant": food.restaurant,
-            "page_title": "修改餐點",
+            "page_title": _("修改餐點")
         },
     )
 
@@ -280,7 +285,7 @@ def food_delete(request, pk):
         "confirm_delete.html",
         {
             "object": food,
-            "object_type": "餐點",
+            "object_type": _("餐點"),
             "restaurant": food.restaurant,
             "cancel_url_name": "restaurant_detail",
         },
