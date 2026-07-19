@@ -24,6 +24,7 @@ class CommentForm(forms.Form):
             raise forms.ValidationError('字數不足')
         return content
 
+
 class CommentForm(forms.Form):
     visitor = forms.CharField(
         max_length=20,
@@ -79,3 +80,29 @@ class FoodForm(forms.ModelForm):
             "comment": _("附註"),
             "is_spicy": _("辣味"),
         }
+
+
+    def __init__(self, *args, restaurant=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.restaurant = restaurant
+
+    def clean_name(self):
+        name = self.cleaned_data.get("name", "").strip()
+
+        if not name:
+            return name
+
+        duplicate_foods = Food.objects.filter(
+            restaurant=self.restaurant,
+            name__iexact=name,
+        )
+
+        if self.instance.pk:
+            duplicate_foods = duplicate_foods.exclude(pk=self.instance.pk)
+
+        if duplicate_foods.exists():
+            raise forms.ValidationError(
+                _("這間餐廳已經有同名的餐點。")
+            )
+
+        return name
