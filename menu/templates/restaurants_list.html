@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}
-    餐廳列表
+    {% trans "餐廳列表" %}
 {% endblock %}
 
 {% block content %}
-    <h2>餐廳列表</h2>
+    <h2>{% trans "餐廳列表" %}</h2>
 
     {% if request.user.is_staff %}
         <p>
@@ -13,7 +14,7 @@
                 href="{% url 'restaurant_create' %}"
                 class="btn btn-primary"
             >
-                新增餐廳
+                {% trans "新增餐廳" %}
             </a>
         </p>
     {% endif %}
@@ -36,6 +37,6 @@
             {% endfor %}
         </div>
     {% else %}
-        <p>目前還沒有餐廳資料。</p>
+        <p>{% trans "目前還沒有餐廳資料。" %}</p>
     {% endif %}
 {% endblock %}

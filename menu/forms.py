@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from menu.models import Food, Restaurant
 
 
@@ -57,9 +58,9 @@ class RestaurantForm(forms.ModelForm):
             "address",
         ]
         labels = {
-            "name": "餐廳名稱",
-            "phone_number": "電話",
-            "address": "地址",
+            "name": _("餐廳名稱"),
+            "phone_number": _("電話"),
+            "address": _("地址"),
         }
 
 
@@ -73,8 +74,8 @@ class FoodForm(forms.ModelForm):
             "is_spicy",
         ]
         labels = {
-            "name": "餐點名稱",
-            "price": "價格",
-            "comment": "餐點說明",
-            "is_spicy": "是否為辣味",
+            "name": _("餐點"),
+            "price": _("價格"),
+            "comment": _("附註"),
+            "is_spicy": _("辣味"),
         }

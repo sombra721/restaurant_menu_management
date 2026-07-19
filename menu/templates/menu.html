@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}
     {{ restaurant.name }}
@@ -7,8 +8,8 @@
 {% block content %}
     <h2>{{ restaurant.name }}</h2>
 
-    <p>電話：{{ restaurant.phone_number }}</p>
-    <p>地址：{{ restaurant.address }}</p>
+    <p>{% trans "電話" %}：{{ restaurant.phone_number }}</p>
+    <p>{% trans "地址" %}：{{ restaurant.address }}</p>
 
     {% if request.user.is_staff %}
         <p>
@@ -16,40 +17,40 @@
                 href="{% url 'restaurant_update' restaurant.pk %}"
                 class="btn btn-default"
             >
-                修改餐廳
+                {% trans "修改餐廳" %}
             </a>
 
             <a
                 href="{% url 'restaurant_delete' restaurant.pk %}"
                 class="btn btn-danger"
             >
-                刪除餐廳
+                {% trans "刪除餐廳" %}
             </a>
 
             <a
                 href="{% url 'food_create' restaurant.pk %}"
                 class="btn btn-primary"
             >
-                新增餐點
+                {% trans "新增餐點" %}
             </a>
         </p>
     {% endif %}
 
     <hr>
 
-    <h3>菜單</h3>
+    <h3>{% trans "菜單" %}</h3>
 
     {% if restaurant.foods.all %}
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>餐點</th>
-                    <th>價格</th>
-                    <th>說明</th>
-                    <th>辣味</th>
+                    <th>{% trans "餐點" %}</th>
+                    <th>{% trans "價格" %}</th>
+                    <th>{% trans "說明" %}</th>
+                    <th>{% trans "辣味" %}</th>
 
                     {% if request.user.is_staff %}
-                        <th>管理</th>
+                        <th>{% trans "管理" %}</th>
                     {% endif %}
                 </tr>
             </thead>
@@ -62,9 +63,9 @@
                         <td>{{ food.comment }}</td>
                         <td>
                             {% if food.is_spicy %}
-                                是
+                                {% trans "是" %}
                             {% else %}
-                                否
+                                {% trans "否" %}
                             {% endif %}
                         </td>
 
@@ -74,14 +75,14 @@
                                     href="{% url 'food_update' food.pk %}"
                                     class="btn btn-xs btn-default"
                                 >
-                                    修改
+                                    {% trans "修改" %}
                                 </a>
 
                                 <a
                                     href="{% url 'food_delete' food.pk %}"
                                     class="btn btn-xs btn-danger"
                                 >
-                                    刪除
+                                    {% trans "刪除" %}
                                 </a>
                             </td>
                         {% endif %}
@@ -90,13 +91,13 @@
             </tbody>
         </table>
     {% else %}
-        <p>這間餐廳目前沒有餐點。</p>
+        <p>{% trans "這間餐廳目前沒有餐點。" %}</p>
     {% endif %}
 
     <a
         href="{% url 'comment_create' restaurant.pk %}"
         class="btn btn-success"
     >
-        發表評論
+        {% trans "發表評論" %}
     </a>
 {% endblock %}
