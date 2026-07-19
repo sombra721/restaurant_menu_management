@@ -209,7 +209,10 @@ def food_create(request, restaurant_pk):
     )
 
     if request.method == "POST":
-        form = FoodForm(request.POST)
+        form = FoodForm(
+            request.POST,
+            restaurant=restaurant,
+        )
 
         if form.is_valid():
             # food needs to belong to a restaurant, so do not commit here.
@@ -222,7 +225,7 @@ def food_create(request, restaurant_pk):
                 pk=restaurant.pk,
             )
     else:
-        form = FoodForm()
+        form = FoodForm(restaurant=restaurant)
 
     return render(
         request,
@@ -243,6 +246,7 @@ def food_update(request, pk):
         form = FoodForm(
             request.POST,
             instance=food,
+            restaurant=food.restaurant,
         )
 
         if form.is_valid():
@@ -253,7 +257,10 @@ def food_update(request, pk):
                 pk=food.restaurant.pk,
             )
     else:
-        form = FoodForm(instance=food)
+        form = FoodForm(
+            instance=food,
+            restaurant=food.restaurant,
+        )
 
     return render(
         request,

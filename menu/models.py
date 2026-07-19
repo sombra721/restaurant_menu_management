@@ -17,23 +17,26 @@ class Restaurant(models.Model):
 
 
 class Food(models.Model):
-    name = models.CharField(max_length=20)
-    price = models.DecimalField(max_digits=6, decimal_places=0)
-    comment = models.CharField(max_length=50, blank=True)
+    restaurant = models.ForeignKey(
+        Restaurant,
+        on_delete=models.CASCADE,
+        related_name="foods",
+    )
+    name = models.CharField(max_length=50)
+    price = models.IntegerField()
+    comment = models.CharField(max_length=100, blank=True)
     is_spicy = models.BooleanField(default=False)
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-
-    def __str__(self):
-        """
-        :returns: name string
-        """
-        return self.name
 
     class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["restaurant", "name"],
+                name="unique_food_name_per_restaurant",
+            ),
+        ]
 
-        """Meta: attribute, options"""
-
-        ordering = ['price']
+    def __str__(self):
+        return self.name
 
 
 class Comment(models.Model):
