@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-18 23:15-0700\n"
+"POT-Creation-Date: 2026-07-19 01:04-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,33 +17,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\menu\forms.py:61
+#: .\menu\forms.py:62
 msgid "餐廳名稱"
 msgstr "Restaurant"
 
-#: .\menu\forms.py:62 .\menu\templates\menu.html:11
+#: .\menu\forms.py:63 .\menu\templates\menu.html:11
 msgid "電話"
 msgstr "TEL"
 
-#: .\menu\forms.py:63 .\menu\templates\menu.html:12
+#: .\menu\forms.py:64 .\menu\templates\menu.html:12
 msgid "地址"
 msgstr "Address"
 
-#: .\menu\forms.py:77 .\menu\templates\menu.html:47 .\menu\views.py:288
+#: .\menu\forms.py:78 .\menu\templates\menu.html:47 .\menu\views.py:295
 msgid "餐點"
 msgstr "Food name"
 
-#: .\menu\forms.py:78 .\menu\templates\menu.html:48
+#: .\menu\forms.py:79 .\menu\templates\menu.html:48
 msgid "價格"
 msgstr "Price"
 
-#: .\menu\forms.py:79
+#: .\menu\forms.py:80
 msgid "附註"
 msgstr "Comment"
 
-#: .\menu\forms.py:80 .\menu\templates\menu.html:50
+#: .\menu\forms.py:81 .\menu\templates\menu.html:50
 msgid "辣味"
 msgstr "Spicy"
+
+#: .\menu\forms.py:105
+msgid "這間餐廳已經有同名的餐點。"
+msgstr "A menu item with the same name already exists in this restaurant."
 
 #: .\menu\templates\base.html:7
 msgid "餐廳網站"
@@ -136,7 +140,7 @@ msgstr ""
 
 #: .\menu\templates\confirm_delete.html:23
 msgid "刪除餐廳後，相關餐點與評論也會一起刪除。"
-msgstr ""
+msgstr "Deleting a restaurant will also delete all associated menu items and reviews."
 
 #: .\menu\templates\food_form.html:21 .\menu\templates\restaurant_form.html:17
 msgid "儲存"
@@ -166,7 +170,7 @@ msgstr "Edit restaurant"
 msgid "刪除餐廳"
 msgstr "Delete restaurant"
 
-#: .\menu\templates\menu.html:34 .\menu\views.py:233
+#: .\menu\templates\menu.html:34 .\menu\views.py:236
 msgid "新增餐點"
 msgstr "Create food"
 
@@ -211,7 +215,7 @@ msgstr "There is no restaurant yet."
 msgid "歡迎！%(user_name)s"
 msgstr "Welcome! %(user_name)s"
 
-#: .\menu\views.py:265
+#: .\menu\views.py:272
 msgid "修改餐點"
 msgstr "Edit food"
 
